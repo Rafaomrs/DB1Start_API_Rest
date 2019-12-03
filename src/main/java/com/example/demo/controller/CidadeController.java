@@ -5,8 +5,11 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,5 +36,13 @@ public class CidadeController {
 	public CidadeDto criarCidade(@RequestBody CidadeFormDto cidadeFormDto) {
 		Cidade cidade = cidadeService.criar(cidadeFormDto);
 		return CidadeAdapter.transformarEntidadeParaDto(cidade);
+	}
+	@PutMapping("/Cidades/{cidadeId}")
+	public void atualizarCidade(@PathVariable Long cidadeId, @RequestBody CidadeFormDto form) {
+		cidadeService.atualizar(cidadeId, form);
+	}
+	@DeleteMapping("/Cidades/{cidadeId}")
+	public void deletarCidade(@PathVariable Long cidadeId) {
+		cidadeService.deletarCidadePorId(cidadeId);
 	}
 }

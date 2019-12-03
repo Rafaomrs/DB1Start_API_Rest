@@ -42,4 +42,7 @@ public class Cidade {
 	public Estado getUf() {
 		return uf;
 	}
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
 }

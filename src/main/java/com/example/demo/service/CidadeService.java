@@ -45,4 +45,18 @@ public class CidadeService {
 	public List<Cidade> buscarTodasCidades() {
 		return cidadeRepository.findAll();
 	}
+	public Cidade buscarPorId(Long id) {
+		return cidadeRepository.findById(id).orElseThrow(() -> new RuntimeException("Cidade nao encontrada"));
+	}
+	
+//    public Cidade atualizar(Long cidadeId, String novoNome) {
+//        Cidade cidade = buscarPorId(cidadeId);
+//        cidade.setNome(cidade.getNome(novoNome));
+//        return cidadeRepository.save(cidade);
+//    }
+    public Cidade atualizar(Long cidadeId, CidadeFormDto alteracoes) {
+        Cidade cidade = buscarPorId(cidadeId);
+        cidade.setNome(alteracoes.getNome());
+        return cidadeRepository.save(cidade);
+    }
 }
