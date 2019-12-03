@@ -3,7 +3,7 @@ package com.example.demo.Dto;
 public class CidadeFormDto {
 	
 	private String nome;
-	private long idEstado;
+	private Long idEstado;
 	
 	public String getNome() {
 		return nome;
