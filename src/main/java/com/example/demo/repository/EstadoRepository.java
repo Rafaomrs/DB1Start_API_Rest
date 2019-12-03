@@ -8,4 +8,5 @@ import com.example.demo.domain.entity.Estado;
 
 public interface EstadoRepository extends JpaRepository<Estado, Long>{
 	Optional<Estado> findByNome(String nome);
+	Optional<Estado> findById(long id);
 }

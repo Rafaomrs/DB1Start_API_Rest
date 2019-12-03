@@ -19,7 +19,7 @@ public class Estado {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
 	@Column(name = "nome")
 	private String nome;
@@ -44,5 +44,9 @@ public class Estado {
 	}
 	public List<Cidade> getCidade(){
 		return cidades;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 }

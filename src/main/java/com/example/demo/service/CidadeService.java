@@ -1,8 +1,11 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.demo.Dto.CidadeFormDto;
 import com.example.demo.domain.entity.Cidade;
 import com.example.demo.domain.entity.Estado;
 import com.example.demo.repository.CidadeRepository;
@@ -17,9 +20,17 @@ public class CidadeService {
 	@Autowired
 	private EstadoRepository estadoRepository;
 	
+	@Autowired
+	private EstadoService estadoService;
+	
 	public Cidade criar(String nome, Estado uf) {
 		estadoRepository.save(uf);
 		Cidade cidade = new Cidade(nome, uf);
+		return cidadeRepository.save(cidade);
+	}
+	public Cidade criar(CidadeFormDto dto) {
+		Estado estado = estadoService.buscarPorId(dto.getIdEstado());
+		Cidade cidade = new Cidade(dto.getNome(), estado);
 		return cidadeRepository.save(cidade);
 	}
 	public void deletarCidadePorId(Long id) {
@@ -31,7 +42,7 @@ public class CidadeService {
 	public void clear() {
 		cidadeRepository.deleteAll();
 	}
-	public void apagarCidadePorId(String nome) {
-		
+	public List<Cidade> buscarTodasCidades() {
+		return cidadeRepository.findAll();
 	}
 }
