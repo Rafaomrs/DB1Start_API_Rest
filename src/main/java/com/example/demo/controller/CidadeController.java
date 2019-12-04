@@ -31,7 +31,6 @@ public class CidadeController {
         return entidadesCidade.stream()
                 .map(CidadeAdapter::transformarEntidadeParaDto).collect(Collectors.toList());
     }
-	
 	@PostMapping("/Cidades")
 	public CidadeDto criarCidade(@RequestBody CidadeFormDto cidadeFormDto) {
 		Cidade cidade = cidadeService.criar(cidadeFormDto);

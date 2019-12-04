@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.example.demo.Dto.CidadeDto;
+
 
 @Entity
 @Table(name = "agencia")
@@ -44,6 +46,9 @@ public class Agencia {
 		this.conta = new ArrayList<>();
 		
 	}
+	public Agencia (String numero, String banco, CidadeDto cidadeDto, Long id) {
+		
+	}
 	
 	public Agencia(String numero, String digito, String banco, Cidade cidade) {
 		this.numero = numero;
@@ -70,6 +75,9 @@ public class Agencia {
 	}
 	public List<Conta> getConta(){
 		return conta;
+	}
+	public CidadeDto getCidade(CidadeDto cidade) {
+		return cidade;
 	}
 	
 }

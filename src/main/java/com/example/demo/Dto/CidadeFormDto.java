@@ -8,7 +8,7 @@ public class CidadeFormDto {
 	public String getNome() {
 		return nome;
 	}
-	public long getIdEstado() {
+	public Long getIdEstado() {
 		return idEstado;
 	}
 	
